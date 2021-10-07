@@ -4,9 +4,9 @@ namespace Calculator
 {
     class Program
     {
-        bool running = true;
         static void Main(string[] args)
         {
+            double[] twoNumbers = new double[2];
             Console.WriteLine("Welcome to Calculator\n");
             while (true)
             {
@@ -25,21 +25,13 @@ namespace Calculator
                     if (userInput > 0 && userInput < 7)
                     {
                         bool running = true;
-                        double[] twoNumbers = new double[2];
+                        double[] multipleNumbers;
                         while (running)
                         {
                             double firstNumber;
                             double secondNumber;
                             try
                             {
-                                //Console.WriteLine();
-                                //Console.WriteLine("Enter the first number or numbers (separated with a space):");
-                                //string input = Console.ReadLine();
-                                //double[] inputArray = Array.ConvertAll(input.Split(' '), Double.Parse);
-                                //double firstNumber = Convert.ToDouble(Console.ReadLine());
-                                //Console.WriteLine("Enter the second or numbers (separated with a space):");
-                                //double secondNumber = Convert.ToDouble(Console.ReadLine());
-                                running = false;
                                 switch (userInput)
                                 {
                                     case 1:
@@ -51,6 +43,7 @@ namespace Calculator
                                         Console.WriteLine(firstNumber + " + " + secondNumber + " = " + sum + "\n");
                                         break;
                                     case 2:
+                                        multipleNumbers = (double[])GetMultipleNumbers();
                                         //double sum = Addition(firstNumber, secondNumber);
                                         //Console.WriteLine(firstNumber + " + " + secondNumber + " = " + sum + "\n");
                                         break;
@@ -62,6 +55,7 @@ namespace Calculator
                                         Console.WriteLine(firstNumber + " - " + secondNumber + " = " + diff + "\n");
                                         break;
                                     case 4:
+                                        multipleNumbers = (double[])GetMultipleNumbers();
                                         //double diff = Subtraction(firstNumber, secondNumber);
                                         //Console.WriteLine(firstNumber + " - " + secondNumber + " = " + diff + "\n");
                                         break;
@@ -85,6 +79,7 @@ namespace Calculator
                                         Console.WriteLine(firstNumber + " / " + secondNumber + " = " + quotient + "\n");
                                         break;
                                 }
+                                running = false;
                             }
                             catch
                             {
@@ -132,7 +127,27 @@ namespace Calculator
             }
             return twoNumbers;
         }
-
+        static Array GetMultipleNumbers()
+        {
+            bool running = true;
+            double[] multipleNumbers = new double[] { };
+            while (running)
+            {
+                try
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Enter the numbers you want to add, separated with a space:");
+                    string input = Console.ReadLine();
+                    multipleNumbers = Array.ConvertAll(input.Split(' '), Double.Parse);
+                    running = false;
+                }
+                catch
+                {
+                    Console.WriteLine("You must enter digits or decimal numbers! Try again.");
+                }
+            }
+            return multipleNumbers;
+        }
         static double Addition(double firstNumber, double secondNumber)
         {
             double sum = firstNumber + secondNumber;
