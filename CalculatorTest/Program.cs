@@ -183,12 +183,12 @@ namespace CalculatorTest
             }
             return diff;
         }
-        static decimal Multiplication(decimal firstNumber, decimal secondNumber)
+        public static decimal Multiplication(decimal firstNumber, decimal secondNumber)
         {
             decimal prod = firstNumber * secondNumber;
             return prod;
         }
-        static decimal Division(decimal firstNumber, decimal secondNumber)
+        public static decimal Division(decimal firstNumber, decimal secondNumber)
         {
             decimal quotient = 0;
             if (secondNumber == 0)

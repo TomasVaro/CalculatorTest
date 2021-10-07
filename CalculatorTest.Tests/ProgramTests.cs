@@ -31,9 +31,31 @@ namespace CalculatorTest.Tests
             //Assert
             Assert.Equal(result, expected);
         }
-        public void SubstractionTest()
-        {
 
+        [Fact]
+        public void MultiplicationTests()
+        {
+            //Arrange
+            decimal firstNumber = 10.4M;
+            decimal secondNumber = -7.3M;
+            decimal expected = -75.92M;
+            //Act
+            decimal result = Program.Multiplication(firstNumber, secondNumber);
+            //Assert
+            Assert.Equal(result, expected);
+        }
+
+        [Fact]
+        public void DivisionTests()
+        {
+            //Arrange
+            decimal firstNumber = 10.4M;
+            decimal secondNumber = -7.3M;
+            decimal expected = -1.424657M;
+            //Act
+            decimal result = Program.Division(firstNumber, secondNumber);
+            //Assert
+            Assert.Equal(result, expected, 4);
         }
     }
 }
