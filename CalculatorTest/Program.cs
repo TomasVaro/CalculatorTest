@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator
+namespace CalculatorTest
 {
     class Program
     {
@@ -35,12 +35,12 @@ namespace Calculator
                                 switch (userInput)
                                 {
                                     case 1:
-                                        twoNumbers = (double[])GetTwoNumbers();
+                                        twoNumbers = GetTwoNumbers();
                                         sum = Addition(twoNumbers[0], twoNumbers[1]);                                        
                                         Console.WriteLine(twoNumbers[0] + " + " + twoNumbers[1] + " = " + sum + "\n");
                                         break;
                                     case 2:
-                                        multipleNumbers = (double[])GetMultipleNumbers();
+                                        multipleNumbers = GetMultipleNumbers();
                                         sum = Addition(multipleNumbers);
                                         for(int i = 0; i < multipleNumbers.Length; i++)
                                         {
@@ -53,12 +53,12 @@ namespace Calculator
                                         Console.WriteLine(" = " + sum);
                                         break;
                                     case 3:
-                                        twoNumbers = (double[])GetTwoNumbers();
+                                        twoNumbers = GetTwoNumbers();
                                         diff = Subtraction(twoNumbers[0], twoNumbers[1]);
                                         Console.WriteLine(twoNumbers[0] + " - " + twoNumbers[1] + " = " + diff + "\n");
                                         break;
                                     case 4:
-                                        multipleNumbers = (double[])GetMultipleNumbers();
+                                        multipleNumbers = GetMultipleNumbers();
                                         diff = Subtraction(multipleNumbers);
                                         for (int i = 0; i < multipleNumbers.Length; i++)
                                         {
@@ -71,12 +71,12 @@ namespace Calculator
                                         Console.WriteLine(" = " + diff);
                                         break;
                                     case 5:
-                                        twoNumbers = (double[])GetTwoNumbers();
+                                        twoNumbers = GetTwoNumbers();
                                         double prod = Multiplication(twoNumbers[0], twoNumbers[1]);
                                         Console.WriteLine(twoNumbers[0] + " * " + twoNumbers[1] + " = " + prod + "\n");
                                         break;
                                     case 6:
-                                        twoNumbers = (double[])GetTwoNumbers();
+                                        twoNumbers = GetTwoNumbers();
                                         double quotient = Division(twoNumbers[0], twoNumbers[1]);
                                         if (quotient == 0)
                                         {
@@ -112,7 +112,7 @@ namespace Calculator
                 }
             }
         }
-        static Array GetTwoNumbers()
+        static double[] GetTwoNumbers()
         {
             bool running = true;
             double[] twoNumbers = new double[2];
@@ -134,7 +134,7 @@ namespace Calculator
             }
             return twoNumbers;
         }
-        static Array GetMultipleNumbers()
+        static double[] GetMultipleNumbers()
         {
             bool running = true;
             double[] multipleNumbers = new double[] { };
@@ -144,7 +144,7 @@ namespace Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("Enter the numbers you want to add or subtract, separated with a space:");
-                    string input = Console.ReadLine();
+                    string input = Console.ReadLine().Trim();
                     multipleNumbers = Array.ConvertAll(input.Split(' '), Double.Parse);
                     running = false;
                 }
