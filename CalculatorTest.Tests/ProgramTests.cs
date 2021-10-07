@@ -84,12 +84,21 @@ namespace CalculatorTest.Tests
         {
             //Arrange
             decimal firstNumber = 10.4M;
-            decimal secondNumber = 0M;
-            decimal expected = 0M;
+            decimal secondNumber = 7.9M;
+            decimal expected = 1.31646M;
             //Act
             decimal result = Program.Division(firstNumber, secondNumber);
             //Assert
             Assert.Equal(result, expected, 4);
+
+            //Arrange
+            firstNumber = 10.4M;
+            secondNumber = 0M;
+            expected = 0M;
+            //Act
+            result = Program.Division(firstNumber, secondNumber);
+            //Assert
+            Assert.Equal(result, expected);
         }
     }
 }
