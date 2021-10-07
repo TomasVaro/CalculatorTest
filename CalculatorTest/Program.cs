@@ -59,9 +59,16 @@ namespace Calculator
                                         break;
                                     case 4:
                                         multipleNumbers = (double[])GetMultipleNumbers();
-                                        Subtraction(multipleNumbers);
                                         diff = Subtraction(multipleNumbers);
-                                        //Console.WriteLine(firstNumber + " - " + secondNumber + " = " + diff + "\n");
+                                        for (int i = 0; i < multipleNumbers.Length; i++)
+                                        {
+                                            Console.Write(multipleNumbers[i]);
+                                            if (i < multipleNumbers.Length - 1)
+                                            {
+                                                Console.Write(" - ");
+                                            }
+                                        }
+                                        Console.WriteLine(" = " + diff);
                                         break;
                                     case 5:
                                         twoNumbers = (double[])GetTwoNumbers();
@@ -136,7 +143,7 @@ namespace Calculator
                 try
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Enter the numbers you want to add, separated with a space:");
+                    Console.WriteLine("Enter the numbers you want to add or subtract, separated with a space:");
                     string input = Console.ReadLine();
                     multipleNumbers = Array.ConvertAll(input.Split(' '), Double.Parse);
                     running = false;
@@ -153,7 +160,7 @@ namespace Calculator
             double sum = firstNumber + secondNumber;
             return sum;
         }
-        static double Addition(Array multipleNumbers)
+        static double Addition(double[] multipleNumbers)
         {
             double sum = 0;
             foreach (double number in multipleNumbers)
@@ -167,9 +174,9 @@ namespace Calculator
             double diff = firstNumber - secondNumber;
             return diff;
         }
-        static double Subtraction(Array multipleNumbers)
+        static double Subtraction(double[] multipleNumbers)
         {
-            double diff = 0;
+            double diff = multipleNumbers[0] * 2;
             foreach (double number in multipleNumbers)
             {
                 diff = diff - number;
