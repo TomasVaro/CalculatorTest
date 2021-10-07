@@ -26,57 +26,57 @@ namespace Calculator
                     {
                         bool running = true;
                         double[] multipleNumbers;
+                        double sum;
+                        double diff;
                         while (running)
                         {
-                            double firstNumber;
-                            double secondNumber;
                             try
                             {
                                 switch (userInput)
                                 {
                                     case 1:
                                         twoNumbers = (double[])GetTwoNumbers();
-                                        firstNumber = twoNumbers[0];
-                                        secondNumber = twoNumbers[1];
-                                        double sum = Addition(firstNumber, secondNumber);
-                                        
-                                        Console.WriteLine(firstNumber + " + " + secondNumber + " = " + sum + "\n");
+                                        sum = Addition(twoNumbers[0], twoNumbers[1]);                                        
+                                        Console.WriteLine(twoNumbers[0] + " + " + twoNumbers[1] + " = " + sum + "\n");
                                         break;
                                     case 2:
                                         multipleNumbers = (double[])GetMultipleNumbers();
-                                        //double sum = Addition(firstNumber, secondNumber);
-                                        //Console.WriteLine(firstNumber + " + " + secondNumber + " = " + sum + "\n");
+                                        sum = Addition(multipleNumbers);
+                                        for(int i = 0; i < multipleNumbers.Length; i++)
+                                        {
+                                            Console.Write(multipleNumbers[i]);
+                                            if (i < multipleNumbers.Length - 1)
+                                            {
+                                                Console.Write(" + ");
+                                            }
+                                        }
+                                        Console.WriteLine(" = " + sum);
                                         break;
                                     case 3:
                                         twoNumbers = (double[])GetTwoNumbers();
-                                        firstNumber = twoNumbers[0];
-                                        secondNumber = twoNumbers[1];
-                                        double diff = Subtraction(firstNumber, secondNumber);
-                                        Console.WriteLine(firstNumber + " - " + secondNumber + " = " + diff + "\n");
+                                        diff = Subtraction(twoNumbers[0], twoNumbers[1]);
+                                        Console.WriteLine(twoNumbers[0] + " - " + twoNumbers[1] + " = " + diff + "\n");
                                         break;
                                     case 4:
                                         multipleNumbers = (double[])GetMultipleNumbers();
-                                        //double diff = Subtraction(firstNumber, secondNumber);
+                                        Subtraction(multipleNumbers);
+                                        diff = Subtraction(multipleNumbers);
                                         //Console.WriteLine(firstNumber + " - " + secondNumber + " = " + diff + "\n");
                                         break;
                                     case 5:
                                         twoNumbers = (double[])GetTwoNumbers();
-                                        firstNumber = twoNumbers[0];
-                                        secondNumber = twoNumbers[1];
-                                        double prod = Multiplication(firstNumber, secondNumber);
-                                        Console.WriteLine(firstNumber + " * " + secondNumber + " = " + prod + "\n");
+                                        double prod = Multiplication(twoNumbers[0], twoNumbers[1]);
+                                        Console.WriteLine(twoNumbers[0] + " * " + twoNumbers[1] + " = " + prod + "\n");
                                         break;
                                     case 6:
                                         twoNumbers = (double[])GetTwoNumbers();
-                                        firstNumber = twoNumbers[0];
-                                        secondNumber = twoNumbers[1];
-                                        double quotient = Division(firstNumber, secondNumber);
+                                        double quotient = Division(twoNumbers[0], twoNumbers[1]);
                                         if (quotient == 0)
                                         {
                                             running = true;
                                             break;
                                         }
-                                        Console.WriteLine(firstNumber + " / " + secondNumber + " = " + quotient + "\n");
+                                        Console.WriteLine(twoNumbers[0] + " / " + twoNumbers[1] + " = " + quotient + "\n");
                                         break;
                                 }
                                 running = false;
@@ -153,18 +153,28 @@ namespace Calculator
             double sum = firstNumber + secondNumber;
             return sum;
         }
-        static double Addition(Array inputArray)
+        static double Addition(Array multipleNumbers)
         {
-            return 1.2;
+            double sum = 0;
+            foreach (double number in multipleNumbers)
+            {
+                sum = sum + number;
+            }
+            return sum;
         }
         static double Subtraction(double firstNumber, double secondNumber)
         {
             double diff = firstNumber - secondNumber;
             return diff;
         }
-        static double Subtraction(Array inputArray)
+        static double Subtraction(Array multipleNumbers)
         {
-            return 1.2;
+            double diff = 0;
+            foreach (double number in multipleNumbers)
+            {
+                diff = diff - number;
+            }
+            return diff;
         }
         static double Multiplication(double firstNumber, double secondNumber)
         {
