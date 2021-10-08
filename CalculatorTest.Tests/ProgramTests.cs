@@ -35,9 +35,8 @@ namespace CalculatorTest.Tests
             Assert.Equal(result, expected);
         }
 
-
         [Fact]
-        public void SubstractionTests()
+        public void SubstractionTwoNumbersTests()
         {
             //Arrange
             double firstNumber = 10.4;
@@ -64,6 +63,7 @@ namespace CalculatorTest.Tests
             // Assert
             Assert.Equal(result, expected);
         }
+
         [Fact]
         public void MultiplicationTests()
         {

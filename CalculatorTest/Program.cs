@@ -78,20 +78,18 @@ namespace CalculatorTest
                                     case 6:
                                         twoNumbers = GetTwoNumbers();
                                         double quotient = Division(twoNumbers[0], twoNumbers[1]);
-                                        if (quotient == 0)
+                                        if (quotient != 0)
                                         {
-                                            running = true;
-                                            break;
+                                            Console.WriteLine(twoNumbers[0] + " / " + twoNumbers[1] + " = " + quotient + "\n");
                                         }
-                                        Console.WriteLine(twoNumbers[0] + " / " + twoNumbers[1] + " = " + quotient + "\n");
                                         break;
                                 }
-                                running = false;
                             }
                             catch
                             {
                                 Console.WriteLine("You must enter a digit or decimal number! Try again.");
                             }
+                            running = false;
                         }
                         Console.ReadKey();
                         Console.Clear();
@@ -150,7 +148,7 @@ namespace CalculatorTest
                 }
                 catch
                 {
-                    Console.WriteLine("You must enter digits or decimal numbers! Try again.");
+                    Console.WriteLine("You must enter digits or decimal numbers separated with a space! Try again.");
                 }
             }
             return multipleNumbers;
