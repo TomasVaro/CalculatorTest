@@ -6,7 +6,7 @@ namespace CalculatorTest
     {
         static void Main(string[] args)
         {
-            decimal[] twoNumbers = new decimal[2];
+            double[] twoNumbers = new double[2];
             Console.WriteLine("Welcome to Calculator\n");
             while (true)
             {
@@ -25,9 +25,9 @@ namespace CalculatorTest
                     if (userInput > 0 && userInput < 7)
                     {
                         bool running = true;
-                        decimal[] multipleNumbers;
-                        decimal sum;
-                        decimal diff;
+                        double[] multipleNumbers;
+                        double sum;
+                        double diff;
                         while (running)
                         {
                             try
@@ -72,12 +72,12 @@ namespace CalculatorTest
                                         break;
                                     case 5:
                                         twoNumbers = GetTwoNumbers();
-                                        decimal prod = Multiplication(twoNumbers[0], twoNumbers[1]);
+                                        double prod = Multiplication(twoNumbers[0], twoNumbers[1]);
                                         Console.WriteLine(twoNumbers[0] + " * " + twoNumbers[1] + " = " + prod + "\n");
                                         break;
                                     case 6:
                                         twoNumbers = GetTwoNumbers();
-                                        decimal quotient = Division(twoNumbers[0], twoNumbers[1]);
+                                        double quotient = Division(twoNumbers[0], twoNumbers[1]);
                                         if (quotient == 0)
                                         {
                                             running = true;
@@ -112,19 +112,19 @@ namespace CalculatorTest
                 }
             }
         }
-        static decimal[] GetTwoNumbers()
+        static double[] GetTwoNumbers()
         {
             bool running = true;
-            decimal[] twoNumbers = new decimal[2];
+            double[] twoNumbers = new double[2];
             while (running)
             {
                 try
                 {
                     Console.WriteLine();
                     Console.WriteLine("Enter the first number:");
-                    twoNumbers[0] = Convert.ToDecimal(Console.ReadLine());
+                    twoNumbers[0] = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Enter the second number:");
-                    twoNumbers[1] = Convert.ToDecimal(Console.ReadLine());
+                    twoNumbers[1] = Convert.ToDouble(Console.ReadLine());
                     running = false;
                 }
                 catch
@@ -134,10 +134,10 @@ namespace CalculatorTest
             }
             return twoNumbers;
         }
-        static decimal[] GetMultipleNumbers()
+        static double[] GetMultipleNumbers()
         {
             bool running = true;
-            decimal[] multipleNumbers = new decimal[] { };
+            double[] multipleNumbers = new double[] { };
             while (running)
             {
                 try
@@ -145,7 +145,7 @@ namespace CalculatorTest
                     Console.WriteLine();
                     Console.WriteLine("Enter the numbers you want to add or subtract, separated with a space:");
                     string input = Console.ReadLine().Trim();
-                    multipleNumbers = Array.ConvertAll(input.Split(' '), Decimal.Parse);
+                    multipleNumbers = Array.ConvertAll(input.Split(' '), double.Parse);
                     running = false;
                 }
                 catch
@@ -155,42 +155,42 @@ namespace CalculatorTest
             }
             return multipleNumbers;
         }
-        public static decimal Addition(decimal firstNumber, decimal secondNumber)
+        public static double Addition(double firstNumber, double secondNumber)
         {
-            decimal sum = firstNumber + secondNumber;
+            double sum = Math.Round((firstNumber + secondNumber), 10);
             return sum;
         }
-        public static decimal Addition(decimal[] multipleNumbers)
+        public static double Addition(double[] multipleNumbers)
         {
-            decimal sum = 0;
-            foreach (decimal number in multipleNumbers)
+            double sum = 0;
+            foreach (double number in multipleNumbers)
             {
-                sum = sum + number;
+                sum = Math.Round((sum + number), 10);
             }
             return sum;
         }
-        public static decimal Subtraction(decimal firstNumber, decimal secondNumber)
+        public static double Subtraction(double firstNumber, double secondNumber)
         {
-            decimal diff = firstNumber - secondNumber;
+            double diff = Math.Round((firstNumber - secondNumber), 10);
             return diff;
         }
-        public static decimal Subtraction(decimal[] multipleNumbers)
+        public static double Subtraction(double[] multipleNumbers)
         {
-            decimal diff = multipleNumbers[0] * 2;
-            foreach (decimal number in multipleNumbers)
+            double diff = multipleNumbers[0] * 2;
+            foreach (double number in multipleNumbers)
             {
-                diff = diff - number;
+                diff = Math.Round((diff - number), 10);
             }
             return diff;
         }
-        public static decimal Multiplication(decimal firstNumber, decimal secondNumber)
+        public static double Multiplication(double firstNumber, double secondNumber)
         {
-            decimal prod = firstNumber * secondNumber;
+            double prod = firstNumber * secondNumber;
             return prod;
         }
-        public static decimal Division(decimal firstNumber, decimal secondNumber)
+        public static double Division(double firstNumber, double secondNumber)
         {
-            decimal quotient = 0;
+            double quotient = 0;
             if (secondNumber == 0)
             {
                 Console.WriteLine("It's not allowed to divide by zero! Try again.\n");

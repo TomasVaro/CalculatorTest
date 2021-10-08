@@ -10,11 +10,11 @@ namespace CalculatorTest.Tests
         public void AdditionTwoNumbersTests()
         {
             //Arrange
-            decimal firstNumber = 10.4M;
-            decimal secondNumber = -7.3M;
-            decimal expected = 3.1M;
+            double firstNumber = 10.4;
+            double secondNumber = -7.3;
+            double expected = 3.1;
             //Act
-            decimal result = Program.Addition(firstNumber, secondNumber);
+            double result = Program.Addition(firstNumber, secondNumber);
             //Assert
             Assert.Equal(result, expected);
         }
@@ -25,26 +25,40 @@ namespace CalculatorTest.Tests
         [InlineData(3.3, 0, 5.5, 6.6, 15.4) ]
         [InlineData(3.3, 4.4, 5.5, null, 13.2)]
         [InlineData(3.3, 4.4, 8888888888888888888, 6.6, 8888888888888888902)]
-        public void AdditionMultipleNumbersTests(decimal n1, decimal n2, decimal n3, decimal n4, decimal expected)
+        public void AdditionMultipleNumbersTests(double n1, double n2, double n3, double n4, double expected)
         {
             //Arrange            
 
             //Act
-            decimal[] testNumbers = { n1, n2, n3, n4 };
-            decimal result = Program.Addition(testNumbers);
+            double[] testNumbers = { n1, n2, n3, n4 };
+            double result = Program.Addition(testNumbers);
             // Assert
             Assert.Equal(result, expected, 0);
         }
+
+        //[Theory]
+        //[InlineData(new double[] { 8, 7.5, 6, 3 })]
+        //public void AdditionMultipleNumbersTest(double[] testNumbers)
+        //{
+        //    //Arrange            
+
+        //    //Act
+        //    double[] testNumbers = { n1, n2, n3, n4 };
+        //    double result = Program.Addition(testNumbers);
+        //    // Assert
+        //    Assert.Equal(result, expected, 0);
+        //}
+
 
         [Fact]
         public void SubstractionTests()
         {
             //Arrange
-            decimal firstNumber = 10.4M;
-            decimal secondNumber = -7.3M;
-            decimal expected = 17.7M;
+            double firstNumber = 10.4;
+            double secondNumber = -7.3;
+            double expected = 17.7;
             //Act
-            decimal result = Program.Subtraction(firstNumber, secondNumber);
+            double result = Program.Subtraction(firstNumber, secondNumber);
             //Assert
             Assert.Equal(result, expected);
         }
@@ -55,13 +69,13 @@ namespace CalculatorTest.Tests
         [InlineData(33.3, 0, 5.5, 6.6, 21.2)]
         [InlineData(33.3, 4.4, 5.5, null, 23.4)]
         [InlineData(8888888888888, 9.5, 20.88, 30.54, 8888888888827.08)]
-        public void SubtractionMultipleNumbersTests(decimal n1, decimal n2, decimal n3, decimal n4, decimal expected)
+        public void SubtractionMultipleNumbersTests(double n1, double n2, double n3, double n4, double expected)
         {
             //Arrange            
 
             //Act
-            decimal[] testNumbers = { n1, n2, n3, n4 };
-            decimal result = Program.Subtraction(testNumbers);
+            double[] testNumbers = { n1, n2, n3, n4 };
+            double result = Program.Subtraction(testNumbers);
             // Assert
             Assert.Equal(result, expected, 2);
         }
@@ -70,11 +84,11 @@ namespace CalculatorTest.Tests
         public void MultiplicationTests()
         {
             //Arrange
-            decimal firstNumber = 10.4M;
-            decimal secondNumber = -7.3M;
-            decimal expected = -75.92M;
+            double firstNumber = 10.4;
+            double secondNumber = -7.3;
+            double expected = -75.92;
             //Act
-            decimal result = Program.Multiplication(firstNumber, secondNumber);
+            double result = Program.Multiplication(firstNumber, secondNumber);
             //Assert
             Assert.Equal(result, expected);
         }
@@ -83,18 +97,18 @@ namespace CalculatorTest.Tests
         public void DivisionTests()
         {
             //Arrange
-            decimal firstNumber = 10.4M;
-            decimal secondNumber = 7.9M;
-            decimal expected = 1.31646M;
+            double firstNumber = 10.4;
+            double secondNumber = 7.9;
+            double expected = 1.31646;
             //Act
-            decimal result = Program.Division(firstNumber, secondNumber);
+            double result = Program.Division(firstNumber, secondNumber);
             //Assert
             Assert.Equal(result, expected, 4);
 
             //Arrange
-            firstNumber = 10.4M;
-            secondNumber = 0M;
-            expected = 0M;
+            firstNumber = 10.4;
+            secondNumber = 0;
+            expected = 0;
             //Act
             result = Program.Division(firstNumber, secondNumber);
             //Assert
